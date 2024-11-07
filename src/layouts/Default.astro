@@ -1,0 +1,70 @@
+---
+interface Props {
+	title: string;
+}
+
+import "../main.css";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Astro description"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/lospampa.png"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<nav class="flex justify-center gap-8 py-2">
+				<a
+					href="/"
+					class="aria-[current=page]:text-primary p-2 text-lg font-bold hover:underline"
+					aria-current={Astro.url.pathname === "/"
+						? "page"
+						: undefined}
+				>
+					Home
+				</a>
+				<a
+					href="/projects"
+					class="aria-[current=page]:text-primary p-2 text-lg font-bold hover:underline"
+					aria-current={Astro.url.pathname === "/projects"
+						? "page"
+						: undefined}
+				>
+					Projects
+				</a>
+				<a
+					href="/publications"
+					class="aria-[current=page]:text-primary p-2 text-lg font-bold hover:underline"
+					aria-current={Astro.url.pathname === "/publications"
+						? "page"
+						: undefined}
+				>
+					Publications
+				</a>
+			</nav>
+		</header>
+		<div class="mx-auto max-w-3xl py-8">
+			<slot />
+		</div>
+	</body>
+</html>
